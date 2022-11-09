@@ -1,0 +1,39 @@
+name: {{cookiecutter.project_slug}}
+version: {{cookiecutter.version}}
+
+authors:
+  - {{cookiecutter.full_name}} <{{cookiecutter.email}}>
+
+targets:
+  {{cookiecutter.project_slug}}:
+    main: src/process_manager.cr
+
+dependencies:
+  grip:
+    github: grip-framework/grip
+    version: ~> 2.0.0
+
+  spectator:
+    github: grip-framework/spectator
+    version: ~> 0.2.0
+
+  amaretto:
+    github: amaretto-graphql/amaretto
+
+  amaretto-grip:
+    github: amaretto-graphql/amaretto-grip
+
+  granite:
+    github: amberframework/granite
+
+  pg:
+    github: will/crystal-pg
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+    version: ~> 1.0.0
+
+crystal: ">= 0.36.0"
+
+license: MIT

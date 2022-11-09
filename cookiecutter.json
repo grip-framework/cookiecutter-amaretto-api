@@ -1,0 +1,8 @@
+{
+  "project_name": "My Awesome Project",
+  "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '')|replace('-', '')|replace('.', '')|trim() }}",
+  "module_slug": "{{ cookiecutter.project_name|replace(' ', '')|replace('-', '::')|replace('.', '::')|replace('_', '::')|trim() }}",
+  "full_name": "John Doe",
+  "email": "{{ cookiecutter.full_name.lower()|replace(' ', '-') }}@example.com",
+  "version": "0.1.0"
+}
