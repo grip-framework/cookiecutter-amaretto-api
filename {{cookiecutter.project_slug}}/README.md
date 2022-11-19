@@ -8,6 +8,7 @@ TODO: Write a description here
 cp .envrc.example .envrc
 direnv allow
 shards install
+ENVIRONMENT=development crystal run src/cli.cr -- up
 ```
 
 Create two database instances and name it after `{{cookiecutter.project_slug}}_dev`, `{{cookiecutter.project_slug}}_test`.

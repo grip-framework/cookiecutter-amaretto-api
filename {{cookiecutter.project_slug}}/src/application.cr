@@ -20,13 +20,6 @@ class Application < Grip::Application
   def initialize(environment : String)
     super(environment: environment, serve_static: false)
 
-    # Migrate any pending migrations in case of an error show the status.
-    begin
-      Micrate::Cli.run_up
-    rescue exception
-      Micrate::Cli.run_status
-    end
-
     # Enable GraphQL on route /graphql
     forward "/graphql", Amaretto::Grip::GraphQL, query: {{cookiecutter.module_slug}}Web::Schema::Query.new, mutation: {{cookiecutter.module_slug}}Web::Schema::Mutation.new
 
