@@ -1,7 +1,7 @@
 describe {{cookiecutter.module_slug}}Web::Queries::Users do
   # Truncate the users table to erase entries existing previously.
   setup do
-    user = {{cookiecutter.module_slug}}::Models::User.new
+    user = {{cookiecutter.module_slug}}::Accounts::User.new
 
     user.first_name = "John"
     user.last_name = "Doe"

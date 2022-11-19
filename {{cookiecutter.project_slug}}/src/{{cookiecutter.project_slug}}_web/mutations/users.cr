@@ -5,7 +5,7 @@ module {{cookiecutter.module_slug}}Web
 
       @[Amaretto::Annotations::Mutation]
       def create_user(context : Context, first_name : String, last_name : String, email : String, password : String) : User
-        user = {{cookiecutter.module_slug}}::Models::User.new
+        user = {{cookiecutter.module_slug}}::Accounts::User.new
 
         user.first_name = first_name
         user.last_name = last_name

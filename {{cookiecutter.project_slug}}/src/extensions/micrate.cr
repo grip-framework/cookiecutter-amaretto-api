@@ -5,7 +5,7 @@ module Micrate
   end
 
   def self.db_dir
-    "src"
+    "priv/granite"
   end
 
   def self.migrations_dir

@@ -1,5 +1,5 @@
 module {{cookiecutter.module_slug}}
-  module Models
+  module Accounts
     class User < Granite::Base
       Granite::Connections << Granite::Adapter::Pg.new(name: "postgres", url: Micrate::DB.connection_url.to_s)
 
