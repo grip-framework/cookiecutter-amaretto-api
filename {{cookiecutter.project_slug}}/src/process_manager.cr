@@ -1,7 +1,7 @@
 require "./application"
 
 # Initialize the `Application` to host the API.
-app = Application.new
+app = Application.new(Constants::ENVIRONMENT)
 
 # For each CPU on the system run the `Application`, reuse the TCP port.
 System.cpu_count.times do |_|

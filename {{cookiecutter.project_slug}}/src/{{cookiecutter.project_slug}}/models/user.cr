@@ -1,12 +1,12 @@
 module {{cookiecutter.module_slug}}
   module Models
     class User < Granite::Base
-      Granite::Connections << Granite::Adapter::Pg.new(name: "postgres", url: Constants::DATABASE_URL)
+      Granite::Connections << Granite::Adapter::Pg.new(name: "postgres", url: Micrate::DB.connection_url.to_s)
 
       connection postgres
       table users
 
-      column id : UUID, converter: Granite::Converters::Uuid(String) , primary: true, auto: false
+      column id : UUID, converter: Granite::Converters::Uuid(String), primary: true, auto: false
 
       column email : String
       column password : String

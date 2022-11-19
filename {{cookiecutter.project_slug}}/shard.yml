@@ -29,6 +29,9 @@ dependencies:
   pg:
     github: will/crystal-pg
 
+  micrate:
+    github: amberframework/micrate
+
 development_dependencies:
   ameba:
     github: crystal-ameba/ameba

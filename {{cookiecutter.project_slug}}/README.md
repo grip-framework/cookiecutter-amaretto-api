@@ -8,13 +8,20 @@ TODO: Write a description here
 cp .envrc.example .envrc
 direnv allow
 shards install
-micrate up
 ```
+
+Create two database instances and name it after `{{cookiecutter.project_slug}}_dev`, `{{cookiecutter.project_slug}}_test`.
 
 ## Usage
 
 ```bash
-crystal run src/process_manager.cr
+ENVIRONMENT=development crystal run src/process_manager.cr
+```
+
+## Testing
+
+```bash
+ENVIRONMENT=test crystal spec
 ```
 
 ## Development

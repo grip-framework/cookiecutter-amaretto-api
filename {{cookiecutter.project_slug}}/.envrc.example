@@ -1,2 +1,2 @@
-export ENVIRONMENT=development
 export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/{{cookiecutter.project_slug}}_dev
+export TEST_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/{{cookiecutter.project_slug}}_test
