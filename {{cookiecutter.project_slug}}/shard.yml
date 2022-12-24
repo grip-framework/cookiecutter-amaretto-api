@@ -20,9 +20,6 @@ dependencies:
   amaretto:
     github: amaretto-graphql/amaretto
 
-  amaretto-grip:
-    github: amaretto-graphql/amaretto-grip
-
   granite:
     github: amberframework/granite
 
@@ -31,6 +28,9 @@ dependencies:
 
   micrate:
     github: amberframework/micrate
+
+  jwt:
+    github: crystal-community/jwt
 
 development_dependencies:
   ameba:

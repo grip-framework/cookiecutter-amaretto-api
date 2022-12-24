@@ -1,10 +1,8 @@
 module {{cookiecutter.module_slug}}Web
   module Mutations
     module Users
-      alias User = {{cookiecutter.module_slug}}Web::Objects::Output::User
-
       @[Amaretto::Annotations::Mutation]
-      def create_user(context : Context, first_name : String, last_name : String, email : String, password : String) : User
+      def create_user(context : Context, first_name : String, last_name : String, email : String, password : String) : String
         user = {{cookiecutter.module_slug}}::Accounts::User.new
 
         user.first_name = first_name
@@ -13,7 +11,7 @@ module {{cookiecutter.module_slug}}Web
         user.password = password
         user.save!
 
-        User.new(id: user.id.to_s, first_name: first_name, last_name: last_name, email: email)
+        JWT.encode({"sub" => user.id.to_s}, Constants::SECRET, JWT::Algorithm::HS256)
       end
     end
   end

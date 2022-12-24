@@ -1,9 +1,10 @@
-require "granite/adapter/pg"
-require "amaretto"
 require "grip"
-require "amaretto-grip"
+require "amaretto/grip"
+
+require "granite/adapter/pg"
 require "crypto/bcrypt/password"
 require "micrate"
+require "jwt"
 
 require "./constants"
 
@@ -25,7 +26,7 @@ class Application < Grip::Application
 
     if environment == "development"
       # Enable GraphiQL interface to GraphQL
-      forward "/graphiql", Amaretto::Grip::GraphiQL, url: "/graphql"
+      forward "/graphiql", Amaretto::Grip::GraphiQL
 
       # Turn on debug mode for development.
       Log.setup(:debug)

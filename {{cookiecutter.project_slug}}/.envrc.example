@@ -1,2 +1,3 @@
+export SECRET=k0hB99RmX04jIrqUgJF3RyhvWv2dWHDt
 export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/{{cookiecutter.project_slug}}_dev
 export TEST_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/{{cookiecutter.project_slug}}_test

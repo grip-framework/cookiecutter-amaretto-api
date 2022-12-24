@@ -1,7 +1,6 @@
 module GraphQL
   class Client
-    def execute_query(query : String) : HTTP::Client::Response
-      headers = HTTP::Headers.new
+    def execute(query : String, headers : HTTP::Headers = HTTP::Headers.new) : HTTP::Client::Response
       headers.add("Content-Type", "application/json")
 
       post Application.new(environment: Constants::ENVIRONMENT), "/graphql", headers, {"query" => query}.to_json

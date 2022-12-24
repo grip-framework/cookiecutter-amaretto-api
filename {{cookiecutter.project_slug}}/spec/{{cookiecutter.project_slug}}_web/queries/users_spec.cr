@@ -1,17 +1,35 @@
+EMAIL    = "john@doe.com"
+PASSWORD = "johnDoe12345678"
+
 describe {{cookiecutter.module_slug}}Web::Queries::Users do
-  # Truncate the users table to erase entries existing previously.
-  setup do
-    user = {{cookiecutter.module_slug}}::Accounts::User.new
+  it "Runs list users query" do
+    setup do
+      # Truncate the users table to erase entries existing previously.
+      {{cookiecutter.module_slug}}::Accounts::User.clear
 
-    user.first_name = "John"
-    user.last_name = "Doe"
-    user.email = "john@doe.com"
-    user.password = "johnDoe12345678"
-    user.save!
-  end
+      user = {{cookiecutter.module_slug}}::Accounts::User.new
 
-  it "Runs create user mutation" do
+      user.first_name = "John"
+      user.last_name = "Doe"
+      user.email = EMAIL
+      user.password = PASSWORD
+      user.save!
+    end
+
     client = GraphQL::Client.new
+
+    query = <<-GraphQL
+      query{
+        signIn(email:"#{EMAIL}", password:"#{PASSWORD}")
+      }
+    GraphQL
+
+    response = client.execute(query)
+    token = JSON.parse(response.body).["data"].["signIn"].to_s
+
+    headers = HTTP::Headers.new
+
+    headers.add("Authorization", "Bearer #{token}")
 
     query = <<-GraphQL
       query{
@@ -22,15 +40,42 @@ describe {{cookiecutter.module_slug}}Web::Queries::Users do
       }
     GraphQL
 
-    response = client.execute_query(query)
-    response.status_code.should eq 200
+    response = client.execute(query, headers)
 
-    data = JSON.parse(response.body).["data"].["listUsers"]
+    users = JSON.parse(response.body).["data"].["listUsers"].as_a
 
-    first_name = data.as_a.first.["firstName"]
-    last_name = data.as_a.first.["lastName"]
+    first_name = users.first.["firstName"]
+    last_name = users.first.["lastName"]
 
     first_name.should eq "John"
     last_name.should eq "Doe"
+  end
+
+  it "Runs sign in query" do
+    setup do
+      # Truncate the users table to erase entries existing previously.
+      {{cookiecutter.module_slug}}::Accounts::User.clear
+
+      user = {{cookiecutter.module_slug}}::Accounts::User.new
+
+      user.first_name = "John"
+      user.last_name = "Doe"
+      user.email = EMAIL
+      user.password = PASSWORD
+      user.save!
+    end
+
+    client = GraphQL::Client.new
+
+    query = <<-GraphQL
+      query{
+        signIn(email:"#{EMAIL}", password:"#{PASSWORD}")
+      }
+    GraphQL
+
+    response = client.execute(query)
+    token = JSON.parse(response.body).["data"].["signIn"].to_s
+
+    token.should start_with "ey"
   end
 end
