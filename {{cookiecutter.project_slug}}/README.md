@@ -4,7 +4,19 @@ TODO: Write a description here
 
 ## Installation
 
+```bash
+docker-compose build
+```
 
+Will build the application in production mode, you can modify the Dockerfile as you wish.
+
+## Usage
+
+```bash
+docker-compose up
+```
+
+You will get a running instance at `https://localhost:4004/graphiql`. 
 
 ## Development
 
