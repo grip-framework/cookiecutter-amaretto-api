@@ -6,28 +6,20 @@ authors:
 
 targets:
   {{cookiecutter.project_slug}}:
-    main: src/process_manager.cr
+    main: src/{{cookiecutter.project_slug}}.cr
 
 dependencies:
   grip:
     github: grip-framework/grip
-    version: ~> 2.0.0
 
   spectator:
     github: grip-framework/spectator
-    version: ~> 0.2.0
 
   amaretto:
     github: amaretto-graphql/amaretto
 
-  granite:
-    github: amberframework/granite
-
-  pg:
-    github: will/crystal-pg
-
-  micrate:
-    github: amberframework/micrate
+  moongoon:
+    github: elbywan/moongoon
 
   jwt:
     github: crystal-community/jwt

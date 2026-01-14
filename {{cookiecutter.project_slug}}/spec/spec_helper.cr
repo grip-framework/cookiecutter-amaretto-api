@@ -9,7 +9,7 @@ require "./client"
 
 def setup
   environment = Constants::ENVIRONMENT
-  raise Exception.new("Environment variable not set to test, make sure to update environment dependant values as well") unless environment == "test"
+  raise Exception.new("Environment variable not set to TEST, make sure to update environment dependant values as well") unless environment == "TEST"
 
   yield
 end

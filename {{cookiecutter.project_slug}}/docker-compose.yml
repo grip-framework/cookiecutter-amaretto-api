@@ -1,0 +1,37 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4004:4004"
+    environment:
+      # App config
+      ENVIRONMENT: "DEVELOPMENT"
+      HOST: "0.0.0.0"
+      PORT: "4004"
+      REUSE_PORT: "true"
+      SECRET: "c9%(oVY7pE'8z4{;Zw:^kQ&M3f'=%lN%]5iOhp,P>b0.]Nef}ZAa43R_m)c/N8}£"
+
+      # Local MongoDB
+      CONNECTION_URI: "mongodb://mongo:27017"
+      DATABASE: "database1"
+
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:7.0
+    container_name: {{cookiecutter.project_slug}}-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: database1
+    command: --quiet
+    restart: unless-stopped
+
+volumes:
+  mongo-data:

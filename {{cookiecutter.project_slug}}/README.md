@@ -4,32 +4,7 @@ TODO: Write a description here
 
 ## Installation
 
-Create two database instances and name it after `{{cookiecutter.project_slug}}_dev`, `{{cookiecutter.project_slug}}_test`.
 
-```bash
-cp .envrc.example .envrc
-direnv allow
-shards install
-ENVIRONMENT=development crystal run src/cli.cr -- up
-```
-
-## Usage
-
-```bash
-ENVIRONMENT=development crystal run src/process_manager.cr
-```
-
-## Testing
-
-```bash
-ENVIRONMENT=test crystal spec
-```
-
-If you come across any database related errors make sure to execute the migrations.
-
-```bash
-ENVIRONMENT=test crystal run src/cli.cr -- up
-```
 
 ## Development
 

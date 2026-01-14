@@ -9,7 +9,14 @@ module {{cookiecutter.module_slug}}Web
         user.last_name = last_name
         user.email = email
         user.password = password
-        user.save!
+
+        # Validate the user; raise Exception if validation fails
+        if errors = user.validate
+          raise Exception.new(errors)
+        end
+
+        # Insert the user into the database
+        user.insert
 
         JWT.encode({"sub" => user.id.to_s}, Constants::SECRET, JWT::Algorithm::HS256)
       end

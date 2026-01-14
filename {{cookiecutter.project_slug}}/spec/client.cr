@@ -3,7 +3,7 @@ module GraphQL
     def execute(query : String, headers : HTTP::Headers = HTTP::Headers.new) : HTTP::Client::Response
       headers.add("Content-Type", "application/json")
 
-      post Application.new(environment: Constants::ENVIRONMENT), "/graphql", headers, {"query" => query}.to_json
+      post Application.new, "/graphql", headers, {"query" => query}.to_json
     end
   end
 end
