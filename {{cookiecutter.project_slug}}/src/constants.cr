@@ -2,7 +2,7 @@
 
 module Constants
   # Application version
-  VERSION = {{cookiecutter.version}}
+  VERSION = "{{cookiecutter.version}}"
 
   # General application settings
   ENVIRONMENT = ENV["ENVIRONMENT"]? || "PRODUCTION" # Set to DEVELOPMENT for local testing
@@ -13,7 +13,7 @@ module Constants
   DOMAIN = ENV["DOMAIN"]? || "localhost:4004" # Application domain
 
   # Security secrets (generate secure values)
-  SECRET = ENV["SECRET"]? # JWT or general app secret (generate with `openssl rand -hex 32`)
+  SECRET = ENV["SECRET"]? || raise Exception.new("Missing SECRET environment variable") # JWT or general app secret (generate with `openssl rand -hex 32`)
 
   # MongoDB configuration
   CONNECTION_URI = ENV["CONNECTION_URI"]? || raise Exception.new("Missing CONNECTION_URI environment variable. Please set it to your MongoDB database connection string (e.g., mongodb://localhost:27017/sanguine_dev)") # MongoDB connection string

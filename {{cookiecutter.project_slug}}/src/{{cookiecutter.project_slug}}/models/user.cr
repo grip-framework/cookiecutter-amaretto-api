@@ -49,7 +49,6 @@ module {{cookiecutter.module_slug}}
           last_name: last_name,
           email: email,
           password: hashed_password,
-          phone_number: phone_number,
           profile_photo: profile_photo,
           created_at: created_at,
           updated_at: updated_at
@@ -74,7 +73,6 @@ module {{cookiecutter.module_slug}}
           json.field "firstName", first_name
           json.field "lastName", last_name
           json.field "email", email
-          json.field "phoneNumber", phone_number
           json.field "profilePhoto", profile_photo
           json.field "createdAt", created_at.to_utc.to_rfc3339
           json.field "updatedAt", updated_at.to_utc.to_rfc3339

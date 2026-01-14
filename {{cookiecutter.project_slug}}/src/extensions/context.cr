@@ -1,7 +1,7 @@
 module Amaretto
   module Grip
     class Context
-      def get_current_user : {{cookiecutter.module_slug}}::Accounts::User
+      def get_current_user : {{cookiecutter.module_slug}}::Models::User
         # Extract the Authorization header; raise Exception if missing
         header = context.get_req_header?("Authorization")
         raise Exception.new("Please provide a JWT authorization token in the header") unless header

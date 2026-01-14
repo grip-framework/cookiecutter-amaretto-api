@@ -1,7 +1,7 @@
 describe {{cookiecutter.module_slug}}Web::Mutations::Users do
   setup do
     # Truncate the users table to erase entries existing previously.
-    {{cookiecutter.module_slug}}::Accounts::User.clear
+    {{cookiecutter.module_slug}}::Models::User.clear
   end
 
   it "Runs create user mutation" do
