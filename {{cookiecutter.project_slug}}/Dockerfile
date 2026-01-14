@@ -7,7 +7,7 @@ RUN shards install --production
 
 COPY src/ ./src/
 COPY spec/ ./spec/ 
-RUN shards build --production --release --static --error-trace -Dpreview_mt && strip bin/{{cookiecutter.project_slug}}
+RUN shards build --progress --production --release --static --error-trace -Dpreview_mt && strip bin/{{cookiecutter.project_slug}}
 
 FROM alpine:3.19
 

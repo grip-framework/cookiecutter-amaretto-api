@@ -23,10 +23,10 @@ module Amaretto
         # Validate the subject is a valid BSON ObjectId; raise Exception if invalid
         raise Exception.new("Invalid authorization token subject") unless BSON::ObjectId.validate(sub)
 
-        if user = {{cookiecutter.module_slug}}::Models::User.find_by_id(id)
+        if user = {{cookiecutter.module_slug}}::Models::User.find_by_id(sub)
           user
         else
-          raise Exception.new("User #{id} was not found.")
+          raise Exception.new("User #{sub} was not found.")
         end
       rescue exception
         Log.debug(exception: exception) { exception.message }
