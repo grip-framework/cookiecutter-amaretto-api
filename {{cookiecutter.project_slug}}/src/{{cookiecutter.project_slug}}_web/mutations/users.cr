@@ -1,7 +1,7 @@
 module {{cookiecutter.module_slug}}Web
   module Mutations
     module Users
-      alias Guardian = Tesla::Guardian
+      alias Guardian = {{cookiecutter.module_slug}}::Guardian
 
       @[Amaretto::Annotations::Mutation]
       def create_user(context : Context, first_name : String, last_name : String, email : String, password : String) : String
