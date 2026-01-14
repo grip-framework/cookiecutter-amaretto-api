@@ -2,7 +2,7 @@
 
 module Constants
   # Application version
-  VERSION = {{ `shards version "#{__DIR__}"`.chomp.stringify }}
+  VERSION = {{cookiecutter.version}}
 
   # General application settings
   ENVIRONMENT = ENV["ENVIRONMENT"]? || "PRODUCTION" # Set to DEVELOPMENT for local testing
